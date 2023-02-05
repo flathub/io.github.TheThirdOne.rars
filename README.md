@@ -2,11 +2,18 @@
 
 [RARS (RISC-V Assembler and Runtime Simulator)](https://github.com/TheThirdOne/rars) created by [Benjamin Landers](https://github.com/TheThirdOne) packaged for [Flatpak](https://flatpak.org)
 
-## License
-
-* The RARS logo is under the [MIT license](https://github.com/TheThirdOne/rars/blob/master/License.txt).
-
 ## Documentation
+
+## Installation
+1. [Install Flatpak (with the Flathub repository)](https://flatpak.org/setup)
+2. Install RARS:
+```shell
+flatpak install flathub io.github.TheThirdOne.rars
+```
+3. Run RARS either from your desktop environment or from the command line:
+```shell
+flatpak run io.github.TheThirdOne.rars
+```
 
 ### Environment Variables
 
@@ -42,3 +49,7 @@ RARS_JAVA=bad-argument flatpak run io.github.TheThirdOne.rars
 flatpak run org.freedesktop.appstream-glib validate io.github.TheThirdOne.rars.metainfo.xml
 desktop-file-validate io.github.TheThirdOne.rars.desktop
 ```
+
+## License
+
+* The RARS logo is under the [MIT license](https://github.com/TheThirdOne/rars/blob/master/License.txt).
