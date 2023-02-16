@@ -31,6 +31,7 @@ modules:
         url: https://github.com/TheThirdOne/rars/releases/download/v1.5/rars1_5.jar
         dest-filename: rars.jar
         sha512: 0644b78691167ba985724e7f545d44f7a0a64f2dc2b9e1b9544a7a4f56e58cbc7ba089bef4e0a7281528de3a5aa943b3be792782fa262211ec596a8104f0fabf
+
       - type: script
         commands:
           # Get the screen width (See https://superuser.com/a/1567163)
@@ -40,18 +41,21 @@ modules:
           - DEFAULT_SCALE=$(awk "BEGIN {printf \"%.3f\",${SCREEN_WIDTH} / 1920}")
 
           # Get the scale
-          - RARS_SCALE="${RARS_SCALE:=$DEFAULT_SCALE}"
+          - RARS_SCALE="${RARS_SCALE:-$DEFAULT_SCALE}"
 
           # Generate Java arguments
-          - RARS_JAVA="${RARS_JAVA:=-Dsun.java2d.uiScale=$RARS_SCALE}"
+          - RARS_JAVA="${RARS_JAVA:--Dsun.java2d.uiScale=$RARS_SCALE}"
 
           # Start
-          - /app/jre/bin/java ${RARS_JAVA} -jar /app/rars/rars.jar $@
+          - /app/jre/bin/java ${RARS_JAVA} -jar /app/rars/rars.jar "$@"
         dest-filename: rars
+
       - type: file
         path: io.github.TheThirdOne.rars.desktop
+
       - type: file
         path: io.github.TheThirdOne.rars.metainfo.xml
+
       - type: file
         path: io.github.TheThirdOne.rars.svg
     build-commands:

@@ -4,7 +4,7 @@
 
 ## Documentation
 
-## Installation
+### Installation
 1. [Install Flatpak (with the Flathub repository)](https://flatpak.org/setup)
 2. Install RARS:
 ```shell
@@ -14,6 +14,15 @@ flatpak install flathub io.github.TheThirdOne.rars
 ```shell
 flatpak run io.github.TheThirdOne.rars
 ```
+
+### File System Access
+By default, RARS will only have access to the Desktop and Documents folders. To grant access to
+other folders, run:
+```shell
+flatpak override io.github.TheThirdOne.rars --user --filesystem=[Type/path]
+```
+See the [Flatpak documentation](https://docs.flatpak.org/en/latest/sandbox-permissions.html#filesystem-access)
+for more information.
 
 ### Environment Variables
 
