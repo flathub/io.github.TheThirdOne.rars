@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="text/x-asm">
+    <glob pattern="*.asm" weight="50"/>
+    <glob pattern="*.s" weight="50"/>
+    <comment>Assembly code</comment>
+  </mime-type>
+  <mime-type type="text/x-asm+riscv">
+    <glob pattern="*.asm" weight="75"/>
+    <glob pattern="*.s" weight="75"/>
+    <comment>RISC-V assembly code</comment>
+  </mime-type>
+</mime-info>
