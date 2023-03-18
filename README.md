@@ -36,7 +36,7 @@ Name | Default | Description
 2. Install Flatpak builder (`flatpak-builder`; see [this](https://docs.flatpak.org/en/latest/first-build.html) guide)
 3. Install dependencies:
 ```shell
-flatpak install org.freedesktop.Sdk.Extension.openjdk17 org.freedesktop.appstream-glib 
+flatpak install org.freedesktop.Sdk org.freedesktop.Sdk.Extension.openjdk17 org.freedesktop.appstream-glib 
 ```
 4. Build:
 ```shell

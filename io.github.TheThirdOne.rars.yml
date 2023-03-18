@@ -28,10 +28,9 @@ modules:
     sources:
       # See https://github.com/TheThirdOne/rars/releases
       - type: file
-        url: https://github.com/TheThirdOne/rars/releases/download/v1.5/rars1_5.jar
+        url: https://github.com/TheThirdOne/rars/releases/download/v1.6/rars1_6.jar
         dest-filename: rars.jar
-        sha512: 0644b78691167ba985724e7f545d44f7a0a64f2dc2b9e1b9544a7a4f56e58cbc7ba089bef4e0a7281528de3a5aa943b3be792782fa262211ec596a8104f0fabf
-
+        sha512: a046c3a1f49ce56cbab0896aafb73e9b39b5bfd0b86ae06cbfb36e369a40636780cb9d171e71ef3e3f7812787a6f490ba4db055f312dc3e61e983b54d78be454
       - type: script
         commands:
           # Get the screen width (See https://superuser.com/a/1567163)
@@ -57,6 +56,9 @@ modules:
         path: io.github.TheThirdOne.rars.metainfo.xml
 
       - type: file
+        path: io.github.TheThirdOne.rars.mime.xml
+
+      - type: file
         path: io.github.TheThirdOne.rars.svg
     build-commands:
       # Copy files
@@ -64,4 +66,8 @@ modules:
       - install -Dm 755 rars /app/bin/rars
       - install -Dm 644 -t /app/share/applications io.github.TheThirdOne.rars.desktop
       - install -Dm 644 -t /app/share/metainfo io.github.TheThirdOne.rars.metainfo.xml
+      - install -Dm 644 -t /app/share/mime/packages io.github.TheThirdOne.rars.mime.xml
       - install -Dm 644 io.github.TheThirdOne.rars.svg /app/share/icons/hicolor/scalable/apps/io.github.TheThirdOne.rars.png
+
+      # Update MIMEs
+      - update-mime-database /app/share/mime

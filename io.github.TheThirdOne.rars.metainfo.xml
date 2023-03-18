@@ -53,7 +53,6 @@
   <provides>
     <mediatype>text/x-asm</mediatype>
     <mediatype>text/x-asm+riscv</mediatype>
-    <mediatype>text/plain</mediatype>
   </provides>
 
   <launchable type="desktop-id">io.github.TheThirdOne.rars.desktop</launchable>
@@ -65,6 +64,7 @@
   <update_contact>wakefulcloud_AT_gmail.com</update_contact>
 
   <releases>
+    <release version="v1.6" date="2023-02-27" />
     <release version="v1.5" date="2020-07-14" />
   </releases>
 </component>

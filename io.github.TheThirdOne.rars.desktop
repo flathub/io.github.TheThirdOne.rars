@@ -5,6 +5,6 @@ Comment=RISC-V Assembler and Runtime Simulator
 Keywords=RARS RISCV RISC-V
 Icon=io.github.TheThirdOne.rars
 Categories=ComputerScience;Development;Education;Emulator;IDE;Utility
-MimeType=text/x-asm;text/x-asm+riscv;text/plain;
+MimeType=text/x-asm;text/x-asm+riscv;
 Exec=rars g %F
 Terminal=false
