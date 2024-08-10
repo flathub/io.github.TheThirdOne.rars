@@ -1,0 +1,36 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@libs/typing@2": "jsr:@libs/typing@2.8.1",
+      "jsr:@libs/xml@^5.4.13": "jsr:@libs/xml@5.4.13",
+      "jsr:@std/html@^1.0.1": "jsr:@std/html@1.0.1",
+      "jsr:@std/path@^1.0.2": "jsr:@std/path@1.0.2"
+    },
+    "jsr": {
+      "@libs/typing@2.8.1": {
+        "integrity": "08437a01ec51f74a20a5ab5d683475025f93a2ad641d2394a97e87f7b5194d78"
+      },
+      "@libs/xml@5.4.13": {
+        "integrity": "995320d1ce4a29ced82233e5e46d47a880e338197bbd257a686bf9afcc3ac0e4",
+        "dependencies": [
+          "jsr:@libs/typing@2"
+        ]
+      },
+      "@std/html@1.0.1": {
+        "integrity": "75d30527251f3ef5ab6d405302f8b3cb0b67cbf836964e207cf604adc01d2cfb"
+      },
+      "@std/path@1.0.2": {
+        "integrity": "a452174603f8c620bd278a380c596437a9eef50c891c64b85812f735245d9ec7"
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@libs/xml@^5.4.13",
+      "jsr:@std/html@^1.0.1",
+      "jsr:@std/path@^1.0.2"
+    ]
+  }
+}

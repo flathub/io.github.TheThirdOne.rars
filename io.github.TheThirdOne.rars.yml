@@ -3,7 +3,7 @@ app-id: io.github.TheThirdOne.rars
 command: rars
 
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 
 sdk: org.freedesktop.Sdk
 sdk-extensions:
@@ -13,6 +13,7 @@ sdk-extensions:
 finish-args:
   - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
   - --socket=x11
+  - --share=ipc
   - --filesystem=xdg-desktop:rw
   - --filesystem=xdg-documents:rw
 

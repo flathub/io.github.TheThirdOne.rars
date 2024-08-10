@@ -3,7 +3,6 @@
   <id>io.github.TheThirdOne.rars</id>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
-
   <name>RARS</name>
   <summary>RISC-V Assembler and Runtime Simulator</summary>
   <description>
@@ -11,32 +10,25 @@
       RARS, the RISC-V Assembler, Simulator, and Runtime, will assemble and simulate the execution
       of RISC-V assembly language programs. Its primary goal is to be an effective development
       environment for people getting started with RISC-V.
+
+      Features:
+      - RISC-V IMFDN Base (riscv32 and riscv64)
+      - Several system calls that match behaviour from MARS or SPIKE.
+      - Support for debugging using breakpoints and/or ebreak
+      - Side by side comparison from psuedo-instruction to machine code with intermediate steps
+      - Multifile assembly using either files open or a directory
+
+      Environment Variables:
+      - RARS_JAVA (Default: none): Passes arguments directly to the Java command (Will override other environment variables)
+      - RARS_SCALE (Default: Screen width / 1920): Sets the sun.java2d.uiScale property (See documentation at https://news.kynosarges.org/2019/03/24/swing-high-dpi-properties/)
     </p>
-
-    <p>Features:</p>
-    <ul>
-      <li>RISC-V IMFDN Base (riscv32 and riscv64)</li>
-      <li>Several system calls that match behaviour from MARS or SPIKE.</li>
-      <li>Support for debugging using breakpoints and/or ebreak</li>
-      <li>Side by side comparison from psuedo-instruction to machine code with intermediate steps</li>
-      <li>Multifile assembly using either files open or a directory</li>
-    </ul>
-
-    <p>Environment Variables:</p>
-    <ul>
-      <li>RARS_JAVA (Default: none): Passes arguments directly to the Java command (Will override
-        other environment variables)</li>
-      <li>RARS_SCALE (Default: Screen width / 1920): Sets the sun.java2d.uiScale property (See
-        documentation at https://news.kynosarges.org/2019/03/24/swing-high-dpi-properties/)</li>
-    </ul>
   </description>
   <keywords>
     <keyword>RARS</keyword>
     <keyword>RISCV</keyword>
     <keyword>RISC-V</keyword>
   </keywords>
-  <icon type="remote" height="512" width="512">
-    https://raw.githubusercontent.com/flathub/io.github.TheThirdOne.rars/master/io.github.TheThirdOne.rars.svg</icon>
+  <icon type="remote" height="512" width="512">https://raw.githubusercontent.com/flathub/io.github.TheThirdOne.rars/master/io.github.TheThirdOne.rars.svg</icon>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/TheThirdOne/rars/master/screenshot.png</image>
@@ -54,17 +46,146 @@
     <mediatype>text/x-asm</mediatype>
     <mediatype>text/x-asm+riscv</mediatype>
   </provides>
-
   <launchable type="desktop-id">io.github.TheThirdOne.rars.desktop</launchable>
-
   <url type="homepage">https://github.com/TheThirdOne/rars</url>
   <url type="faq">https://github.com/TheThirdOne/rars/wiki</url>
   <developer_name>Benjamin Landers</developer_name>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <update_contact>wakefulcloud_AT_gmail.com</update_contact>
-
   <releases>
-    <release version="v1.6" date="2023-02-27" />
-    <release version="v1.5" date="2020-07-14" />
+    <release version="v1.6" date="2023-02-27T06:16:43Z">
+      <description>
+        <p>
+          Its been a while since the last update so here&#39;s a new stable version. 
+
+Improvements:
+  - Color options for the editor that allow dark themes (#67, #99). Thanks to @XLPhere for adding this.
+  - Basic representation of jumps is now more intuitive (#89).
+  - Added an example program for the game mastermind (#109). Thanks to @EmmanuelLazard for adding this.
+  - More psuedo-instructions (#122, #144).
+  - There is an option to use the main assembly file for the CWD (#123). Thanks to @giancarlopernudisegura for adding this.
+  - CSRs are now printable from the CLI (#136).
+  - Better error message for out of range immediates (#139). 
+  - `.global` is now an alias for `.globl` (#152).
+  - Tab while selecting multiple lines now indents all of the lines (#168). Thanks to @Wakeful-Cloud for adding this. 
+  - Added file open support (#169). Thanks to @Wakeful-Cloud for adding this. 
+
+Bugfixes:
+  - InstructionCounter now also counts B and J type instructions and InstructionStatist...
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.6</url>
+    </release>
+    <release version="v1.5" date="2020-07-15T04:10:51Z">
+      <description>
+        <p>
+          RARS has uses 32 bit wide registers and therefore used the base RISC-V instruction set rv32i. However, there is also a rv64i base instruction set which widens registers to 64 bits and defines new instructions to handle 32-bit modular arithmetic. A list of instructions added by rv64i and brief explanation of the general differences between rv32 and rv64 is on the [wiki](). This release adds an option to switch between the base instruction sets.
+
+When I initially ported RARS, I did not include support for rv64i because it seemed unnecessary. However, relatively recently, I became aware that a number of people teaching with RARS would like support for rv64i because the textbook they use uses rv64i and it can be confusing to students to deal with translating the minor differences. Additionally, the software ecosystem for RISC-V supports rv64i much better than rv32i so it is a nice bonus to allow better interoperability with other software.
+
+Some relevant issues that include discussi...
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.5</url>
+    </release>
+    <release version="v1.4" date="2019-11-27T00:36:23Z">
+      <description>
+        <p>
+          Major Improvements:
+  - Complete bit accurate floating point support
+    - Floating point operations are now performed with [JSoftFloat]() rather than Java&#39;s native `float`.  This allows setting the `fflags` CSR and obeying non-default rounding modes.
+    - Some previously unknown bugs were also fixed
+    - All floating point tests from [riscv-tests]() now pass
+  - Improved GCC and clang compatibility (#16)
+    - Various directives for starting sections have been added (.sdata, .section, ...)
+    - Undocumented psuedo-ops `fgt.s`, `fge.s` are now supported (66f1f426f31e7eecb3e944815a27442b0482ecd3)
+  - Support for double extension
+    - With the two above changes, it made sense to also add the D extension as it helps with compatibility and is more relevant as detailed lessons about floating poitn can now be taught with RARS
+    - This necessitated a change in UI for the floating point register window. With the hexadecimal setting, values last accessed as doubles will be 64...
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.4</url>
+    </release>
+    <release version="v1.3.1" date="2019-11-22T08:15:44Z">
+      <description>
+        <p>
+          Just a small update to give a version number to the small improvements that have been added over the last month.
+
+Bugfixes:
+  - UI no longer deadlocks from repeated clicking of step or run button (#42). Credit to @BenjaminBeichler for finding this
+  - @rmnattas added some the missing `jal t0` and `jalr t0` psuedo-ops (#43)
+
+Other improvements: 
+  - GCC compatability has improved through the addition of `%hi` and `%lo` and new directives (#16) 
+  - Support for UTF-8 in string related system calls was finished (#28)
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.3.1</url>
+    </release>
+    <release version="v1.3" date="2019-06-19T22:57:53Z">
+      <description>
+        <p>
+          This release adds a Java API that allows quick, configurable automated simulation. It is over 10x faster than using the CLI and has more access to test programs more thoroughly. This should help any educators make program runners to evaluate students programs.
+
+There are some important issues about the interface as it stands:
+  - There isn&#39;t a standard program runner for educators to quickly modify to suit their needs
+  - There isn&#39;t much documentation regard how exactly to use the inteface
+
+The current best references are rars.api.Program which implements the bulk of the interface and Test.java which uses it to run the integration test for RARS now.
+
+If that leaves something unclear or you would like some direction in the creation of a program using that interface, please comment in #13. Discussion on how to improve the API further is also welcomed.
+
+Other Improvements: 
+  - Set up TravisCI to automatically build the latest commit
+  - Used a profiler to speed up simulat...
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.3</url>
+    </release>
+    <release version="v1.2" date="2019-03-21T22:06:28Z">
+      <description>
+        <p>
+          This release added some checks to make sure that missing properties files wouldn&#39;t crash on launch. This was revealed as an issue in #9. 
+
+That issue also pushed me to make a script to build jars so that should be a easily reproducible.
+
+Also @Obijuan made a pull request to update the documentation for the ReadString syscall.
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.2</url>
+    </release>
+    <release version="v1.1" date="2018-08-28T17:54:13Z">
+      <description>
+        <p>
+          At the request of @josepll, this release incorporates the bug fixes that have been made over the last year.  
+
+Namely the bugfixes are:
+  - Fix funct field on BLTU, BGE, and BGEU
+  - Fix lbu alignment and add test to verify it
+  - Removed compact psuedo-ops code (because it wouldn&#39;t work with riscv anyway)
+  - Fix la and friends in the aftermath of the auipc fix
+  - Fix bug where AUIPC used PC+4 instead of PC
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.1</url>
+    </release>
+    <release version="v1.0" date="2017-08-29T06:41:44Z">
+      <description>
+        <p>
+          ## Decsription
+
+RARS, the RISC-V Assembler and Runtime Simulator will assemble and simulate the execution of RISC-V assembly language programs. Its primary goal is to be an effective development environment for people getting started with RISC-V. It is a direct port of MARS, the MIPS Assembler and Runtime Simulator; the code specific to MIPS was switch out with new code to support assembling and running RISC-V assembly.
+
+The included jar can be run without arguments to launch the IDE or it can be run in the terminal with arguments to  
+
+## Changes from MARS
+
+RARS was built on MARS 4.5 and owes a lot to the development of MARS; its important to note what are new developments and what come straight from MARS. Besides moving from supporting MIPS to RISC-V and the associated small changes, there are several general changes worth noting.
+
+Instructions can now be hot-loaded like Tools. If you want to support an additional extension to the RISC-V instruction set. the .class files...
+        </p>
+      </description>
+      <url>https://github.com/TheThirdOne/rars/releases/tag/v1.0</url>
+    </release>
   </releases>
 </component>
