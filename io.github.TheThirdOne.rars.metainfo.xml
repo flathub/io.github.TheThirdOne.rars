@@ -32,6 +32,7 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/TheThirdOne/rars/master/screenshot.png</image>
+      <caption>RARS open with an example program</caption>
     </screenshot>
   </screenshots>
   <categories>
