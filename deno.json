@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@libs/xml": "jsr:@libs/xml@^5.4.13",
+    "@std/html": "jsr:@std/html@^1.0.1",
+    "@std/path": "jsr:@std/path@^1.0.2"
+  }
+}

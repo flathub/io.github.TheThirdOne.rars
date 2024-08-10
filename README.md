@@ -58,6 +58,10 @@ RARS_JAVA=bad-argument flatpak run io.github.TheThirdOne.rars
 flatpak run org.freedesktop.appstream-glib validate io.github.TheThirdOne.rars.metainfo.xml
 desktop-file-validate io.github.TheThirdOne.rars.desktop
 ```
+8. Uninstall:
+```shell
+flatpak uninstall io.github.TheThirdOne.rars
+```
 
 ## License
 

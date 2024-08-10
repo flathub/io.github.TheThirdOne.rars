@@ -3,7 +3,7 @@ app-id: io.github.TheThirdOne.rars
 command: rars
 
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 
 sdk: org.freedesktop.Sdk
 sdk-extensions:
@@ -13,6 +13,7 @@ sdk-extensions:
 finish-args:
   - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
   - --socket=x11
+  - --share=ipc
   - --filesystem=xdg-desktop:rw
   - --filesystem=xdg-documents:rw
 
@@ -67,7 +68,7 @@ modules:
       - install -Dm 644 -t /app/share/applications io.github.TheThirdOne.rars.desktop
       - install -Dm 644 -t /app/share/metainfo io.github.TheThirdOne.rars.metainfo.xml
       - install -Dm 644 -t /app/share/mime/packages io.github.TheThirdOne.rars.mime.xml
-      - install -Dm 644 io.github.TheThirdOne.rars.svg /app/share/icons/hicolor/scalable/apps/io.github.TheThirdOne.rars.png
+      - install -Dm 644 io.github.TheThirdOne.rars.svg /app/share/icons/hicolor/scalable/apps/io.github.TheThirdOne.rars.svg
 
       # Update MIMEs
       - update-mime-database /app/share/mime
